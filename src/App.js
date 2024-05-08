@@ -13,10 +13,22 @@ import Discussion from './Discussion';
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Summary />} />
-      <Route path="/discussion" element={<Discussion />} />
-    </Routes>
+    <Router>
+    <div>
+     
+
+      {/* A <Switch> looks through its children <Route>s and
+          renders the first one that matches the current URL. */}
+      <Switch>
+        <Route path="/discussion">
+          <Discussion />
+        </Route>
+        <Route path="/">
+          <Summary />
+        </Route>
+      </Switch>
+    </div>
+  </Router>
   );
 }
 
