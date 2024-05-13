@@ -3,30 +3,47 @@ import Badge from 'react-bootstrap/Badge';
 import Accordion from 'react-bootstrap/Accordion';
 import Button from 'react-bootstrap/Button';
 
+let topicSampleData = [
+  {
+    id: "1",
+    keywords: "Clarity, Methodology, Findings, Contribution",
+    reviewers: "R1, R4",
+    summary: "Reviewers 1 and 4 emphasize the need for clarity in methodology and findings to enhance the paper's contribution."
+  },
+  {
+    id: "2",
+    keywords: "Livestreaming, Literacy, Method, Findings",
+    reviewers: "R2",
+    summary: "Reviewer 2 focuses on the importance of exploring livestreaming for literacy in China and the clarity of method and findings."
+  },
+  {
+    id: "3",
+    keywords: "Pedagogical models, Data analysis, Recommendations, HCI",
+    reviewers: "R3",
+    summary: "Reviewer 3 highlights the significance of pedagogical models, data analysis, and recommendations for the HCI community."
+  }
+
+]
+
 function TopicCard() {
   return (
     <Card>
       <Card.Header>
         <h6>
-          Topic <Badge pill bg="info">5</Badge>
+          Topic <Badge pill bg="info">{topicSampleData.length}</Badge>
         </h6>
       </Card.Header>
       <Card.Body>
         <Accordion defaultActiveKey="0">
-          <Accordion.Item eventKey="0">
-            <Accordion.Header>Paper Originality</Accordion.Header>
+          {topicSampleData.map(function(data) {return (
+            <Accordion.Item eventKey={data.id}>
+            <Accordion.Header>{data.keywords}</Accordion.Header>
             <Accordion.Body>
               <div class="topic-content">
-                <p style={{ paddingLeft: '5px' }}><strong>Reviewer&nbsp; &nbsp; &nbsp; <span>R1, R2</span></strong> </p>
+                <p style={{ paddingLeft: '5px' }}><strong>Reviewer&nbsp; &nbsp; &nbsp; <span>{data.reviewers}</span></strong> </p>
                 <Card bg='#F0F2FC' style={{ marginBottom: '15px', backgroundColor: '#F0F2FC' }}>
                   <Card.Body>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                    minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat. Duis aute irure dolor in
-                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                    culpa qui officia deserunt mollit anim id est laborum.
+                   {data.summary}
                   </Card.Body>
                 </Card>
                 <Button variant="primary">Prompt</Button>{' '}
@@ -34,18 +51,7 @@ function TopicCard() {
 
             </Accordion.Body>
           </Accordion.Item>
-          <Accordion.Item eventKey="1">
-            <Accordion.Header>Methodology</Accordion.Header>
-            <Accordion.Body>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-              minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-              aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-              pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-              culpa qui officia deserunt mollit anim id est laborum.
-            </Accordion.Body>
-          </Accordion.Item>
+          )})}
         </Accordion>
       </Card.Body>
     </Card>
