@@ -1,5 +1,6 @@
 import TopicCard from './TopicCard';
 import './Summary.css';
+import Comments from './Comments';
 
 function Summary() {
     return (
@@ -8,7 +9,7 @@ function Summary() {
           <TopicCard />
           </div>
           <div className="sideBar">
-          <TopicCard/>
+          <Comments/>
         </div>
         </div>
     )
