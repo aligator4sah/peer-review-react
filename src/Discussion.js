@@ -3,11 +3,11 @@ import './Summary.css';
 import Comments from './Comments';
 import Message from './Message';
 
-function Discussion() {
+function Discussion({status}) {
     return (
         <div className="review-summary">
             <div className="sideBar">
-                <TopicCard />
+                <TopicCard status={status}/>
             </div>
             <div className="sideBar">
                 <Message />

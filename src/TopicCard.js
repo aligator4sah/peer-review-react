@@ -2,6 +2,7 @@ import Card from 'react-bootstrap/Card';
 import Badge from 'react-bootstrap/Badge';
 import Accordion from 'react-bootstrap/Accordion';
 import Button from 'react-bootstrap/Button';
+import { useState } from 'react';
 
 let topicSampleData = [
   {
@@ -25,9 +26,20 @@ let topicSampleData = [
 
 ]
 
-function TopicCard() {
-  return (
-    <Card>
+let discussionData = [
+  {
+    id: "1",
+    topic_keywords: "Significance, Research Quality",
+    reviewer_involved: "Reviewer1, Reviewer2, Reviewer3",
+    summary: "Reviewers 1, 2, and 3 have differing opinions on the significance and research quality of the paper.",
+    prompt_question: "How do you perceive the significance and research quality of the paper, considering the varying opinions among reviewers?"
+  }
+]
+function TopicCard({status}) {
+  // const [status, setStatus] = useState('summary');
+  if (status === 'summary') {
+    return (
+      <Card>
       <Card.Header>
         <h6>
           Topic <Badge pill bg="info">{topicSampleData.length}</Badge>
@@ -35,23 +47,57 @@ function TopicCard() {
       </Card.Header>
       <Card.Body>
         <Accordion defaultActiveKey="0">
-          {topicSampleData.map(function(data) {return (
-            <Accordion.Item eventKey={data.id}>
-            <Accordion.Header>{data.keywords}</Accordion.Header>
-            <Accordion.Body>
-              <div class="topic-content">
-                <p style={{ paddingLeft: '5px' }}><strong>Reviewer&nbsp; &nbsp; &nbsp; <span>{data.reviewers}</span></strong> </p>
-                <Card bg='#F0F2FC' style={{ marginBottom: '15px', backgroundColor: '#F0F2FC' }}>
-                  <Card.Body>
-                   {data.summary}
-                  </Card.Body>
-                </Card>
-                <Button variant="primary">Prompt</Button>{' '}
-              </div>
+          {topicSampleData.map(function (data) {
+            return (
+              <Accordion.Item eventKey={data.id}>
+                <Accordion.Header>{data.keywords}</Accordion.Header>
+                <Accordion.Body>
+                  <div class="topic-content">
+                    <p style={{ paddingLeft: '5px' }}><strong>Reviewer&nbsp; &nbsp; &nbsp; <span>{data.reviewers}</span></strong> </p>
+                    <Card bg='#F0F2FC' style={{ marginBottom: '15px', backgroundColor: '#F0F2FC' }}>
+                      <Card.Body>
+                        {data.summary}
+                      </Card.Body>
+                    </Card>
+                    <Button variant="primary">Prompt</Button>{' '}
+                  </div>
 
-            </Accordion.Body>
-          </Accordion.Item>
-          )})}
+                </Accordion.Body>
+              </Accordion.Item>
+            )
+          })}
+        </Accordion>
+      </Card.Body>
+    </Card>
+    )
+  }
+  return (
+    <Card>
+      <Card.Header>
+        <h6>
+          Topic <Badge pill bg="info">{discussionData.length}</Badge>
+        </h6>
+      </Card.Header>
+      <Card.Body>
+        <Accordion defaultActiveKey="0">
+          {discussionData.map(function (data) {
+            return (
+              <Accordion.Item eventKey={data.id}>
+                <Accordion.Header>{data.topic_keywords}</Accordion.Header>
+                <Accordion.Body>
+                  <div class="topic-content">
+                    <p style={{ paddingLeft: '5px' }}><strong>Reviewer&nbsp; &nbsp; &nbsp; <span>{data.reviewer_involved}</span></strong> </p>
+                    <Card bg='#F0F2FC' style={{ marginBottom: '15px', backgroundColor: '#F0F2FC' }}>
+                      <Card.Body>
+                        {data.summary}
+                      </Card.Body>
+                    </Card>
+                    <Button variant="primary">Prompt</Button>{' '}
+                  </div>
+                </Accordion.Body>
+              </Accordion.Item>
+            )
+          })}
         </Accordion>
       </Card.Body>
     </Card>

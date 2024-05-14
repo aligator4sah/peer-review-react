@@ -2,11 +2,11 @@ import TopicCard from './TopicCard';
 import './Summary.css';
 import Comments from './Comments';
 
-function Summary() {
+function Summary({status}) {
   return (
     <div className="review-summary">
       <div className="sideBar">
-        <TopicCard />
+        <TopicCard status={status}/>
       </div>
       <div className="sideBar">
         <Comments />
