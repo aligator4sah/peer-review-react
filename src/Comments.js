@@ -30,7 +30,7 @@ function Comments() {
                     Comments
                 </h6>
             </Card.Header>
-            <Card.Body>
+            <Card.Body style={{height: '100%'}}>
                 {commentsSampleDate.map(function (data) {
                     return (
                         <div key={data.id} style={{marginBottom: '5px'}}>

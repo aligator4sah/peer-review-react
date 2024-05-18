@@ -2,7 +2,7 @@ import Card from 'react-bootstrap/Card';
 import Badge from 'react-bootstrap/Badge';
 import Accordion from 'react-bootstrap/Accordion';
 import Button from 'react-bootstrap/Button';
-import { useState } from 'react';
+
 
 let topicSampleData = [
   {
@@ -45,7 +45,7 @@ function TopicCard({status}) {
           Topic <Badge pill bg="info">{topicSampleData.length}</Badge>
         </h6>
       </Card.Header>
-      <Card.Body>
+      <Card.Body style={{height: '100%'}}>
         <Accordion defaultActiveKey="0">
           {topicSampleData.map(function (data) {
             return (
